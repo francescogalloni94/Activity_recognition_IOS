@@ -1,6 +1,10 @@
 import numpy as np
 from statsmodels import robust
 from scipy.fftpack import fft
+from scipy.stats import iqr
+from scipy.stats import skew
+from scipy.stats import kurtosis
+
 
 class SensorFeaturesExtractor:
 
@@ -15,9 +19,8 @@ class SensorFeaturesExtractor:
         means_x = self.compute_features(self.sensor_x)
         means_y = self.compute_features(self.sensor_y)
         means_z = self.compute_features(self.sensor_z)
-        print(means_x.shape)
-        #print(means_y.shape)
-        #print(means_z.shape)
+        concatenate = np.concatenate((means_x,means_y,means_z),axis=1)
+        return concatenate
 
 
     def compute_features(self,sensor):
@@ -30,13 +33,22 @@ class SensorFeaturesExtractor:
             mad = robust.mad(row)
             min = np.min(row)
             max = np.max(row)
+            interquartile_range = iqr(row)
             frequency_row = fft(row)
-
+            mean_freq = np.mean(frequency_row)
+            max_freq = np.max(frequency_row)
+            skew_freq = skew(frequency_row)
+            kurtosis_freq = kurtosis(frequency_row)
             feature_vector.append(mean)
             feature_vector.append(std)
             feature_vector.append(mad)
             feature_vector.append(min)
             feature_vector.append(max)
+            feature_vector.append(interquartile_range)
+            feature_vector.append(mean_freq)
+            feature_vector.append(max_freq)
+            feature_vector.append(skew_freq)
+            feature_vector.append(kurtosis_freq)
             features_matrix.append(feature_vector)
         return np.array(features_matrix)
 

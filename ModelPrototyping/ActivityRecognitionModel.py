@@ -39,8 +39,17 @@ y_test = pd.read_csv(pwd_y_test,delim_whitespace=True,header=None).values
 
 labels_mapping = pd.read_csv(pwd_labels,delim_whitespace=True,header=None).values
 
-features = SensorFeaturesExtractor(body_acc_x_train,body_acc_y_train,body_acc_z_train)
-features.extractFeature()
+body_acc_features_train = SensorFeaturesExtractor(body_acc_x_train,body_acc_y_train,body_acc_z_train)
+body_acc_features_train = body_acc_features_train.extractFeature()
+
+body_gyro_features_train = SensorFeaturesExtractor(body_gyro_x_train,body_gyro_y_train,body_gyro_z_train)
+body_gyro_features_train = body_gyro_features_train.extractFeature()
+
+total_acc_features_train = SensorFeaturesExtractor(total_acc_x_train,total_acc_y_train,total_acc_z_train)
+total_acc_features_train = total_acc_features_train.extractFeature()
+
+X_train = np.concatenate((body_acc_features_train,body_gyro_features_train,total_acc_features_train),axis=1)
+print(X_train.shape)
 
 
 
