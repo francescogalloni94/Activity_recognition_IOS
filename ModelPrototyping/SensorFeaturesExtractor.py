@@ -1,6 +1,6 @@
 import numpy as np
 from statsmodels import robust
-from scipy.fftpack import fft
+from scipy.fftpack import rfft
 from scipy.stats import iqr
 from scipy.stats import skew
 from scipy.stats import kurtosis
@@ -34,7 +34,7 @@ class SensorFeaturesExtractor:
             min = np.min(row)
             max = np.max(row)
             interquartile_range = iqr(row)
-            frequency_row = fft(row)
+            frequency_row = rfft(row)
             mean_freq = np.mean(frequency_row)
             max_freq = np.max(frequency_row)
             skew_freq = skew(frequency_row)
