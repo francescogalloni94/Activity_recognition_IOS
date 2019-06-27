@@ -104,7 +104,7 @@ feature_scaler = StandardScaler()
 X_train = feature_scaler.fit_transform(X_train)
 X_test = feature_scaler.transform(X_test)
 
-'''print("Random Forest grid search cross validation training...")
+print("Random Forest grid search cross validation training...")
 rf_parameters = [{'n_estimators':[10,50,100,150,200,250,300],'criterion':['entropy','gini']}]
 rf_classifier = GridSearchCV(estimator=RandomForestClassifier(),param_grid=rf_parameters,scoring='f1_weighted',cv=5,n_jobs=-1)
 rf_classifier = rf_classifier.fit(X_train,y_train)
@@ -139,7 +139,7 @@ print('Accuracy score: '+str(accuracy_score(y_test_svm,y_pred_svm)))
 print('F1 score: '+str(f1_score(y_test_svm,y_pred_svm,average='weighted'))+'\n')
 
 svm_coreml_model = coremltools.converters.sklearn.convert(svm_classifier.best_estimator_)
-svm_coreml_model.save('svm_ar.mlmodel')'''
+svm_coreml_model.save('svm_ar.mlmodel')
 
 
 def create_model(input_shape,hidden_layers,hidden_units,classes):
