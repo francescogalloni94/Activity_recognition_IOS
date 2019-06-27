@@ -8,10 +8,12 @@ from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
+from sklearn.preprocessing import OneHotEncoder
 from keras.layers import Input,Dense
 from keras.models import Model
 from keras.wrappers.scikit_learn import KerasClassifier
 from confusionMatrix import plot_confusion_matrix
+import coremltools
 
 pwd_x_train = '../ActivityRecognitionDataset/UCI HAR Dataset/train/Inertial Signals'
 pwd_y_train = '../ActivityRecognitionDataset/UCI HAR Dataset/train/y_train.txt'
@@ -102,20 +104,23 @@ feature_scaler = StandardScaler()
 X_train = feature_scaler.fit_transform(X_train)
 X_test = feature_scaler.transform(X_test)
 
-print("Random Forest grid search cross validation training...")
-random_forest_parameters = [{'n_estimators':[10,50,100,150,200,250,300],'criterion':['entropy','gini']}]
-rf_classifier = GridSearchCV(estimator=RandomForestClassifier(),param_grid=random_forest_parameters,scoring='f1_weighted',cv=5,n_jobs=-1)
+'''print("Random Forest grid search cross validation training...")
+rf_parameters = [{'n_estimators':[10,50,100,150,200,250,300],'criterion':['entropy','gini']}]
+rf_classifier = GridSearchCV(estimator=RandomForestClassifier(),param_grid=rf_parameters,scoring='f1_weighted',cv=5,n_jobs=-1)
 rf_classifier = rf_classifier.fit(X_train,y_train)
 print('Best parameters value: '+str(rf_classifier.best_params_)+'\n')
 print('Best scores on 5-Fold cross validation: '+str(rf_classifier.best_score_)+'\n')
 y_pred_rf = rf_classifier.predict(X_test)
-y_test,y_pred_rf = get_labels(labels_mapping,y_test,y_pred_rf)
-cm_rf = confusion_matrix(y_test,y_pred_rf)
+y_test_rf,y_pred_rf = get_labels(labels_mapping,y_test,y_pred_rf)
+cm_rf = confusion_matrix(y_test_rf,y_pred_rf)
 print('Confusion Matrix:\n')
 print(cm_rf)
 plot_confusion_matrix(cm_rf,filename='RF_cm.png',title='Random Forest Activity Recognition')
-print('Accuracy score: '+str(accuracy_score(y_test,y_pred_rf)))
-print('F1 score: '+str(f1_score(y_test,y_pred_rf,average='weighted'))+'\n')
+print('Accuracy score: '+str(accuracy_score(y_test_rf,y_pred_rf)))
+print('F1 score: '+str(f1_score(y_test_rf,y_pred_rf,average='weighted'))+'\n')
+
+rf_coreml_model = coremltools.converters.sklearn.convert(rf_classifier.best_estimator_)
+rf_coreml_model.save('rf_ar.mlmodel')
 
 
 print("Support vector machine grid search cross validation training...")
@@ -125,19 +130,26 @@ svm_classifier = svm_classifier.fit(X_train,y_train)
 print('Best parameters value: '+str(svm_classifier.best_params_)+'\n')
 print('Best scores on 5-Fold cross validation: '+str(svm_classifier.best_score_)+'\n')
 y_pred_svm = svm_classifier.predict(X_test)
-y_test,y_pred_svm = get_labels(labels_mapping,y_test,y_pred_svm)
-cm_svm = confusion_matrix(y_test,y_pred_svm)
+y_test_svm,y_pred_svm = get_labels(labels_mapping,y_test,y_pred_svm)
+cm_svm = confusion_matrix(y_test_svm,y_pred_svm)
 print('Confusion Matrix:\n')
 print(cm_svm)
 plot_confusion_matrix(cm_svm,filename='SVM_cm.png',title='Support Vector Machine Activity Recognition')
-print('Accuracy score: '+str(accuracy_score(y_test,y_pred_svm)))
-print('F1 score: '+str(f1_score(y_test,y_pred_svm,average='weighted'))+'\n')
+print('Accuracy score: '+str(accuracy_score(y_test_svm,y_pred_svm)))
+print('F1 score: '+str(f1_score(y_test_svm,y_pred_svm,average='weighted'))+'\n')
+
+svm_coreml_model = coremltools.converters.sklearn.convert(svm_classifier.best_estimator_)
+svm_coreml_model.save('svm_ar.mlmodel')'''
 
 
 def create_model(input_shape,hidden_layers,hidden_units,classes):
     input = Input((input_shape,))
     for i in range(hidden_layers):
-        structure = Dense(units=hidden_units,kernel_initializer='glorot_uniform',activation='relu')(input)
+        if i==0:
+             structure = Dense(units=hidden_units,kernel_initializer='glorot_uniform',activation='relu')(input)
+        else:
+            structure = Dense(units=hidden_units, kernel_initializer='glorot_uniform', activation='relu')(structure)
+
 
     structure = Dense(units=classes,kernel_initializer='glorot_uniform',activation='softmax')(structure)
     model = Model(inputs=input,outputs=structure)
@@ -153,10 +165,22 @@ nn_classifier = nn_classifier.fit(X_train,y_train)
 print('Best parameters value: '+str(nn_classifier.best_params_)+'\n')
 print('Best scores on 5-Fold cross validation: '+str(nn_classifier.best_score_)+'\n')
 y_pred_nn = nn_classifier.predict(X_test)
-y_test,y_pred_nn = get_labels(labels_mapping,y_test,y_pred_nn)
-cm_nn = confusion_matrix(y_test,y_pred_nn)
+y_test_nn,y_pred_nn = get_labels(labels_mapping,y_test,y_pred_nn)
+cm_nn = confusion_matrix(y_test_nn,y_pred_nn)
 print('Confusion Matrix:\n')
 print(cm_nn)
 plot_confusion_matrix(cm_nn,filename='NN_cm.png',title='Neural Network Activity Recognition')
-print('Accuracy score: '+str(accuracy_score(y_test,y_pred_nn)))
-print('F1 score: '+str(f1_score(y_test,y_pred_nn,average='weighted'))+'\n')
+print('Accuracy score: '+str(accuracy_score(y_test_nn,y_pred_nn)))
+print('F1 score: '+str(f1_score(y_test_nn,y_pred_nn,average='weighted'))+'\n')
+
+
+nn_parameters = nn_classifier.best_params_
+nn_model = create_model(X_train.shape[1],nn_parameters['hidden_layers'],nn_parameters['hidden_units'],6)
+encoder = OneHotEncoder(categories='auto')
+y_train_nn = encoder.fit_transform(y_train.reshape(-1,1)).toarray()
+nn_model.fit(x=X_train,y=y_train_nn,epochs=50,batch_size=100)
+
+nn_coreml_model = coremltools.converters.keras.convert(nn_model)
+nn_coreml_model.save('nn_ar.mlmodel')
+
+
