@@ -11,6 +11,7 @@ from sklearn.metrics import f1_score
 from keras.layers import Input,Dense
 from keras.models import Model
 from keras.wrappers.scikit_learn import KerasClassifier
+from confusionMatrix import plot_confusion_matrix
 
 pwd_x_train = '../ActivityRecognitionDataset/UCI HAR Dataset/train/Inertial Signals'
 pwd_y_train = '../ActivityRecognitionDataset/UCI HAR Dataset/train/y_train.txt'
@@ -50,6 +51,17 @@ y_test = pd.read_csv(pwd_y_test,delim_whitespace=True,header=None).values
 y_test = np.ravel(y_test)
 
 labels_mapping = pd.read_csv(pwd_labels,delim_whitespace=True,header=None).values
+
+def get_labels(labels_mapping,y_true,y_pred):
+    y_true_labels = []
+    y_pred_labels = []
+    for element in y_true:
+        label = labels_mapping[element-1][1]
+        y_true_labels.append(label)
+    for element in y_pred:
+        label = labels_mapping[element-1][1]
+        y_pred_labels.append(label)
+    return np.array(y_true_labels),np.array(y_pred_labels)
 
 print("Feature extraction...\n")
 body_acc_features_train = SensorFeaturesExtractor(body_acc_x_train,body_acc_y_train,body_acc_z_train)
@@ -97,9 +109,11 @@ rf_classifier = rf_classifier.fit(X_train,y_train)
 print('Best parameters value: '+str(rf_classifier.best_params_)+'\n')
 print('Best scores on 5-Fold cross validation: '+str(rf_classifier.best_score_)+'\n')
 y_pred_rf = rf_classifier.predict(X_test)
+y_test,y_pred_rf = get_labels(labels_mapping,y_test,y_pred_rf)
 cm_rf = confusion_matrix(y_test,y_pred_rf)
 print('Confusion Matrix:\n')
 print(cm_rf)
+plot_confusion_matrix(cm_rf,filename='RF_cm.png',title='Random Forest Activity Recognition')
 print('Accuracy score: '+str(accuracy_score(y_test,y_pred_rf)))
 print('F1 score: '+str(f1_score(y_test,y_pred_rf,average='weighted'))+'\n')
 
@@ -111,9 +125,11 @@ svm_classifier = svm_classifier.fit(X_train,y_train)
 print('Best parameters value: '+str(svm_classifier.best_params_)+'\n')
 print('Best scores on 5-Fold cross validation: '+str(svm_classifier.best_score_)+'\n')
 y_pred_svm = svm_classifier.predict(X_test)
+y_test,y_pred_svm = get_labels(labels_mapping,y_test,y_pred_svm)
 cm_svm = confusion_matrix(y_test,y_pred_svm)
 print('Confusion Matrix:\n')
 print(cm_svm)
+plot_confusion_matrix(cm_svm,filename='SVM_cm.png',title='Support Vector Machine Activity Recognition')
 print('Accuracy score: '+str(accuracy_score(y_test,y_pred_svm)))
 print('F1 score: '+str(f1_score(y_test,y_pred_svm,average='weighted'))+'\n')
 
@@ -137,8 +153,10 @@ nn_classifier = nn_classifier.fit(X_train,y_train)
 print('Best parameters value: '+str(nn_classifier.best_params_)+'\n')
 print('Best scores on 5-Fold cross validation: '+str(nn_classifier.best_score_)+'\n')
 y_pred_nn = nn_classifier.predict(X_test)
+y_test,y_pred_nn = get_labels(labels_mapping,y_test,y_pred_nn)
 cm_nn = confusion_matrix(y_test,y_pred_nn)
 print('Confusion Matrix:\n')
 print(cm_nn)
+plot_confusion_matrix(cm_nn,filename='NN_cm.png',title='Neural Network Activity Recognition')
 print('Accuracy score: '+str(accuracy_score(y_test,y_pred_nn)))
 print('F1 score: '+str(f1_score(y_test,y_pred_nn,average='weighted'))+'\n')
