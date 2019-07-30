@@ -13,10 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordingButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        stackView.frame.origin.x = view.frame.width/2 - stackView.frame.width/2
+        stackView.frame.origin.y = view.frame.height/2 - stackView.frame.width/2
         let transfrom = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
         activityIndicator.transform = transfrom
         activityIndicator.isHidden = true
