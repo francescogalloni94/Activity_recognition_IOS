@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordingButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
-    var sensorSampler:SensorSamplingOperation?
+    var sensorSampler: SensorSamplingOperation!
     let operationQueue = OperationQueue()
     
     override func viewDidLoad() {
@@ -35,17 +35,18 @@ class ViewController: UIViewController {
             recordingLabel.text = "RECORDING ACTIVITY..."
             recordingButton.setTitle("STOP",for:.normal)
             self.sensorSampler = SensorSamplingOperation()
-            sensorSampler!.completionBlock = {
+            sensorSampler.completionBlock = {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else{
                         return
                     }
+                    var preprocessing = Preprocessing(xAcc:self.sensorSampler.accXList, yAcc:self.sensorSampler.accYList, zAcc: self.sensorSampler.accZList, xGyro: self.sensorSampler.gyroXList, yGyro: self.sensorSampler.gyroYList, zGyro: self.sensorSampler.gyroZList)
                     
                 }
             }
-            operationQueue.addOperation(sensorSampler!)
+            operationQueue.addOperation(sensorSampler)
         }else if buttonString == "STOP"{
-            sensorSampler!.cancel()
+            sensorSampler.cancel()
             
         }
         

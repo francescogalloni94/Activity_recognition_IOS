@@ -17,6 +17,8 @@
 		4FE110A722F4929200CE005E /* nn_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A622F4929200CE005E /* nn_ar.mlmodel */; };
 		4FE110A922F492B000CE005E /* rf_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A822F492B000CE005E /* rf_ar.mlmodel */; };
 		4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */; };
+		4FE110AD22F49C3700CE005E /* Preprocessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AC22F49C3700CE005E /* Preprocessing.swift */; };
+		4FE110AF22F49C4A00CE005E /* FeatureExtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AE22F49C4A00CE005E /* FeatureExtraction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		4FE110A622F4929200CE005E /* nn_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = nn_ar.mlmodel; path = ModelPrototyping/nn_ar.mlmodel; sourceTree = SOURCE_ROOT; };
 		4FE110A822F492B000CE005E /* rf_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = rf_ar.mlmodel; path = ModelPrototyping/rf_ar.mlmodel; sourceTree = SOURCE_ROOT; };
 		4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = svm_ar.mlmodel; path = ModelPrototyping/svm_ar.mlmodel; sourceTree = SOURCE_ROOT; };
+		4FE110AC22F49C3700CE005E /* Preprocessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preprocessing.swift; sourceTree = "<group>"; };
+		4FE110AE22F49C4A00CE005E /* FeatureExtraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureExtraction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				4FE110A622F4929200CE005E /* nn_ar.mlmodel */,
 				4FE110A822F492B000CE005E /* rf_ar.mlmodel */,
 				4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */,
+				4FE110AC22F49C3700CE005E /* Preprocessing.swift */,
+				4FE110AE22F49C4A00CE005E /* FeatureExtraction.swift */,
 			);
 			path = ActivityRecognitionIOS;
 			sourceTree = "<group>";
@@ -152,6 +158,8 @@
 			files = (
 				4FC53EE622C25D20008EFF69 /* ViewController.swift in Sources */,
 				4FE110A922F492B000CE005E /* rf_ar.mlmodel in Sources */,
+				4FE110AD22F49C3700CE005E /* Preprocessing.swift in Sources */,
+				4FE110AF22F49C4A00CE005E /* FeatureExtraction.swift in Sources */,
 				4FB7C38F22F0A163001517DA /* SensorSamplingOperation.swift in Sources */,
 				4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */,
 				4FE110A522F4900400CE005E /* Predictors.swift in Sources */,
