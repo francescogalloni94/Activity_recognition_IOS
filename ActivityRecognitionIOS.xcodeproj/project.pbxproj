@@ -14,6 +14,9 @@
 		4FC53EEB22C25D22008EFF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC53EEA22C25D22008EFF69 /* Assets.xcassets */; };
 		4FC53EEE22C25D22008EFF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC53EEC22C25D22008EFF69 /* LaunchScreen.storyboard */; };
 		4FE110A522F4900400CE005E /* Predictors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A422F4900400CE005E /* Predictors.swift */; };
+		4FE110A722F4929200CE005E /* nn_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A622F4929200CE005E /* nn_ar.mlmodel */; };
+		4FE110A922F492B000CE005E /* rf_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A822F492B000CE005E /* rf_ar.mlmodel */; };
+		4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		4FC53EED22C25D22008EFF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FC53EEF22C25D22008EFF69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE110A422F4900400CE005E /* Predictors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictors.swift; sourceTree = "<group>"; };
+		4FE110A622F4929200CE005E /* nn_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = nn_ar.mlmodel; path = ModelPrototyping/nn_ar.mlmodel; sourceTree = SOURCE_ROOT; };
+		4FE110A822F492B000CE005E /* rf_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = rf_ar.mlmodel; path = ModelPrototyping/rf_ar.mlmodel; sourceTree = SOURCE_ROOT; };
+		4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = svm_ar.mlmodel; path = ModelPrototyping/svm_ar.mlmodel; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				4FC53EEF22C25D22008EFF69 /* Info.plist */,
 				4FB7C38E22F0A163001517DA /* SensorSamplingOperation.swift */,
 				4FE110A422F4900400CE005E /* Predictors.swift */,
+				4FE110A622F4929200CE005E /* nn_ar.mlmodel */,
+				4FE110A822F492B000CE005E /* rf_ar.mlmodel */,
+				4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */,
 			);
 			path = ActivityRecognitionIOS;
 			sourceTree = "<group>";
@@ -142,9 +151,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC53EE622C25D20008EFF69 /* ViewController.swift in Sources */,
+				4FE110A922F492B000CE005E /* rf_ar.mlmodel in Sources */,
 				4FB7C38F22F0A163001517DA /* SensorSamplingOperation.swift in Sources */,
+				4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */,
 				4FE110A522F4900400CE005E /* Predictors.swift in Sources */,
 				4FC53EE422C25D20008EFF69 /* AppDelegate.swift in Sources */,
+				4FE110A722F4929200CE005E /* nn_ar.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
