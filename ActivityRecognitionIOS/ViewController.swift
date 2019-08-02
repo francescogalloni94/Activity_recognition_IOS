@@ -40,7 +40,7 @@ class ViewController: UIViewController {
                     guard let self = self else{
                         return
                     }
-                    print("finito")
+                    
                 }
             }
             operationQueue.addOperation(sensorSampler!)
