@@ -41,7 +41,7 @@ class ViewController: UIViewController {
                         return
                     }
                     var preprocessing = Preprocessing(xAcc:self.sensorSampler.accXList, yAcc:self.sensorSampler.accYList, zAcc: self.sensorSampler.accZList, xGyro: self.sensorSampler.gyroXList, yGyro: self.sensorSampler.gyroYList, zGyro: self.sensorSampler.gyroZList)
-                    
+
                 }
             }
             operationQueue.addOperation(sensorSampler)
