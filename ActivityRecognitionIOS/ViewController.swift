@@ -40,7 +40,9 @@ class ViewController: UIViewController {
                     guard let self = self else{
                         return
                     }
-                    var preprocessing = Preprocessing(xAcc:self.sensorSampler.accXList, yAcc:self.sensorSampler.accYList, zAcc: self.sensorSampler.accZList, xGyro: self.sensorSampler.gyroXList, yGyro: self.sensorSampler.gyroYList, zGyro: self.sensorSampler.gyroZList)
+                    let preprocessing = Preprocessing(xAcc:self.sensorSampler.accXList, yAcc:self.sensorSampler.accYList, zAcc: self.sensorSampler.accZList, xGyro: self.sensorSampler.gyroXList, yGyro: self.sensorSampler.gyroYList, zGyro: self.sensorSampler.gyroZList)
+                    let featureExtraction = FeatureExtraction(totalX: preprocessing.preprocessedXTotalAcc, totalY: preprocessing.preprocessedYTotalAcc, totalZ: preprocessing.preprocessedZTotalAcc, bodyX: preprocessing.preprocessedXBodyAcc, bodyY: preprocessing.preprocessedYBodyAcc, bodyZ: preprocessing.preprocessedZBodyAcc, gyroX: preprocessing.preprocessedXGyro, gyroY: preprocessing.preprocessedYGyro, gyroZ: preprocessing.preprocessedZGyro)
+                    let featureMatrix = featureExtraction.getFeaturesMatrix()
 
                 }
             }

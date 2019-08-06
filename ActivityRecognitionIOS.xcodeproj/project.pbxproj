@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F705C3322F9891B002B1F2E /* SigmaDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F705C3222F9891B002B1F2E /* SigmaDistrib.swift */; };
 		4FB7C38F22F0A163001517DA /* SensorSamplingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB7C38E22F0A163001517DA /* SensorSamplingOperation.swift */; };
 		4FC53EE422C25D20008EFF69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC53EE322C25D20008EFF69 /* AppDelegate.swift */; };
 		4FC53EE622C25D20008EFF69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC53EE522C25D20008EFF69 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F705C3222F9891B002B1F2E /* SigmaDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigmaDistrib.swift; sourceTree = "<group>"; };
 		4FB7C38E22F0A163001517DA /* SensorSamplingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorSamplingOperation.swift; sourceTree = "<group>"; };
 		4FC53EE022C25D20008EFF69 /* ActivityRecognitionIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityRecognitionIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC53EE322C25D20008EFF69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		4FC53EE222C25D20008EFF69 /* ActivityRecognitionIOS */ = {
 			isa = PBXGroup;
 			children = (
+				4F705C3222F9891B002B1F2E /* SigmaDistrib.swift */,
 				4FC53EE322C25D20008EFF69 /* AppDelegate.swift */,
 				4FC53EE522C25D20008EFF69 /* ViewController.swift */,
 				4FC53EE722C25D20008EFF69 /* Main.storyboard */,
@@ -163,6 +166,7 @@
 				4FB7C38F22F0A163001517DA /* SensorSamplingOperation.swift in Sources */,
 				4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */,
 				4FE110A522F4900400CE005E /* Predictors.swift in Sources */,
+				4F705C3322F9891B002B1F2E /* SigmaDistrib.swift in Sources */,
 				4FC53EE422C25D20008EFF69 /* AppDelegate.swift in Sources */,
 				4FE110A722F4929200CE005E /* nn_ar.mlmodel in Sources */,
 			);
