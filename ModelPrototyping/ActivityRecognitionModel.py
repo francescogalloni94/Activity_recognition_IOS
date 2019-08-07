@@ -104,6 +104,9 @@ feature_scaler = StandardScaler()
 X_train = feature_scaler.fit_transform(X_train)
 X_test = feature_scaler.transform(X_test)
 
+coreml_scaler = coremltools.converters.sklearn.convert(feature_scaler)
+coreml_scaler.save('feature_scaler.mlmodel')
+
 print("Random Forest grid search cross validation training...")
 rf_parameters = [{'n_estimators':[10,50,100,150,200,250,300],'criterion':['entropy','gini']}]
 rf_classifier = GridSearchCV(estimator=RandomForestClassifier(),param_grid=rf_parameters,scoring='f1_weighted',cv=5,n_jobs=-1)
