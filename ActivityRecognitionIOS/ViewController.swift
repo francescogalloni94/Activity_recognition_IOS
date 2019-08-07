@@ -57,12 +57,10 @@ class ViewController: UIViewController {
     }
     
     func segue(identifier: String){
-        print("performing")
         performSegue(withIdentifier: identifier, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare")
         if segue.identifier == "predictionSegue"{
             let destinationVC = segue.destination as? PredictionViewController
             //print(self.featureMatrix)

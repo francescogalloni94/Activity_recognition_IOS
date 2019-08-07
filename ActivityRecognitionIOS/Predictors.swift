@@ -11,12 +11,12 @@ import CoreML
 
 class Predictors {
     
-    var neural_network: nn_ar
-    var random_forets : rf_ar
-    var svm : svm_ar
-    var scaler : feature_scaler
+    private var neural_network: nn_ar
+    private var random_forets : rf_ar
+    private var svm : svm_ar
+    private var scaler : feature_scaler
     
-    let labelMapping = [
+    private let labelMapping = [
         1:"WALKING",
         2:"WALKING_UPSTAIRS",
         3:"WALKING_DOWNSTAIRS",
@@ -80,11 +80,16 @@ class Predictors {
         return converted
     }
     
-    private func getFeaturesScaled(input:[feature_scalerInput])->[feature_scalerOutput]{
-        guard let output = try? self.scaler.predictions(inputs:input) else {
+    private func getFeaturesScaled(input:[[Double]])->[MLMultiArray]{
+        var converted = convertScalerInput(input: input)
+        guard let output = try? self.scaler.predictions(inputs:converted) else {
             fatalError("Unexpected runtime error.")
         }
-        return output
+        var scaledFeatures = [MLMultiArray]()
+        for(index,element) in output.enumerated(){
+            scaledFeatures.append(output[index].transformed_features)
+        }
+        return scaledFeatures
     }
     
     func getNeuralNetworkPrediction(inputs:[nn_arInput])->[nn_arOutput]{
@@ -94,19 +99,59 @@ class Predictors {
         return output
     }
     
-    func getRandomForestPrediction(inputs:[[Double]])->[rf_arOutput]{
-        var convertedInput = convertRFInput(input: convertToMultiArray(input: inputs))
-        guard let output = try? self.random_forets.predictions(inputs:convertedInput) else {
+    func getRandomForestPrediction(inputs:[[Double]])->String{
+        var convertedScaledInput = convertRFInput(input: getFeaturesScaled(input: inputs))
+        guard let output = try? self.random_forets.predictions(inputs:convertedScaledInput) else {
             fatalError("Unexpected runtime error.")
         }
-        return output
+        var majority = getMajorityPrediction(labels: convertRFOutput(output: output))
+        return labelMapping[majority]!
     }
     
-    func getSVMPrediction(inputs:[svm_arInput])->[svm_arOutput]{
-        guard let output = try? self.svm.predictions(inputs:inputs) else {
+    func getSVMPrediction(inputs:[[Double]])->String{
+        var convertedScaledInput = convertSVMInput(input: getFeaturesScaled(input: inputs))
+        guard let output = try? self.svm.predictions(inputs:convertedScaledInput) else {
             fatalError("Unexpected runtime error.")
         }
-        return output
+        var majority = getMajorityPrediction(labels: convertSVMOutput(output: output))
+        return labelMapping[majority]!
     }
+    
+    private func convertRFOutput(output:[rf_arOutput])->[Int]{
+        var labels = [Int]()
+        for element in output{
+            labels.append(Int(element.classLabel))
+        }
+        return labels
+    }
+    
+    
+    private func convertSVMOutput(output:[svm_arOutput])->[Int]{
+        var labels = [Int]()
+        for element in output{
+            labels.append(Int(element.classLabel))
+        }
+        return labels
+    }
+    
+    private func convertNNOutput(){
+        
+    }
+    
+    
+    private func getMajorityPrediction(labels:[Int])->Int{
+        let mappedItems = labels.map{ ($0, 1) }
+        let counts = Dictionary(mappedItems, uniquingKeysWith: +)
+        var maxFreq = 0
+        var maxKey = 0
+        for (key,value) in counts{
+            if value>maxFreq{
+                maxFreq = value
+                maxKey = key
+            }
+        }
+        return maxKey
+    }
+    
     
 }
