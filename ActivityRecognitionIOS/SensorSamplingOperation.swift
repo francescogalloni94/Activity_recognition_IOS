@@ -89,7 +89,7 @@ class SensorSamplingOperation: Operation{
         while true {
           
             if(isCancelled){
-                print("operation canceled")
+                //print("operation canceled")
                 stopSensors()
                 return
             }

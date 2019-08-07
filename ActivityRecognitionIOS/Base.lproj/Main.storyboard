@@ -60,11 +60,27 @@
                         <outlet property="recordingButton" destination="PGZ-C3-YYd" id="ugk-HP-xHV"/>
                         <outlet property="recordingLabel" destination="am1-Bs-bFq" id="BBQ-HG-Gsh"/>
                         <outlet property="stackView" destination="dDc-Wd-T7q" id="kIe-oK-1xq"/>
+                        <segue destination="uba-Dz-yU6" kind="show" identifier="predictionSegue" id="3fm-kM-ghk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="118.52678571428571"/>
+        </scene>
+        <!--Prediction View Controller-->
+        <scene sceneID="bJO-nA-LHs">
+            <objects>
+                <viewController id="uba-Dz-yU6" customClass="PredictionViewController" customModule="ActivityRecognitionIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eDA-cJ-178">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EJe-AB-H1c"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLv-zn-Lll" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1021" y="121"/>
         </scene>
     </scenes>
 </document>

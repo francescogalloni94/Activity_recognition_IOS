@@ -9,10 +9,21 @@
 import UIKit
 
 class PredictionViewController: UIViewController {
+    
+    var featureMatrix : [[Double]]?
+    var predictors : Predictors?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //print("view controlleeeers")
+        //print(self.featureMatrix!)
+        self.predictors = Predictors()
+        var output = predictors?.getRandomForestPrediction(inputs: self.featureMatrix!)
+        print(output![0].classLabel)
+        /*print(self.featureMatrix?.count)
+        for element in self.featureMatrix!{
+            print(element.count)
+        }*/
         // Do any additional setup after loading the view.
     }
     

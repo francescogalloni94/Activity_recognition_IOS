@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     var sensorSampler: SensorSamplingOperation!
     let operationQueue = OperationQueue()
+    var featureMatrix = [[Double]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +43,31 @@ class ViewController: UIViewController {
                     }
                     let preprocessing = Preprocessing(xAcc:self.sensorSampler.accXList, yAcc:self.sensorSampler.accYList, zAcc: self.sensorSampler.accZList, xGyro: self.sensorSampler.gyroXList, yGyro: self.sensorSampler.gyroYList, zGyro: self.sensorSampler.gyroZList)
                     let featureExtraction = FeatureExtraction(totalX: preprocessing.preprocessedXTotalAcc, totalY: preprocessing.preprocessedYTotalAcc, totalZ: preprocessing.preprocessedZTotalAcc, bodyX: preprocessing.preprocessedXBodyAcc, bodyY: preprocessing.preprocessedYBodyAcc, bodyZ: preprocessing.preprocessedZBodyAcc, gyroX: preprocessing.preprocessedXGyro, gyroY: preprocessing.preprocessedYGyro, gyroZ: preprocessing.preprocessedZGyro)
-                    let featureMatrix = featureExtraction.getFeaturesMatrix()
-
+                    self.featureMatrix = featureExtraction.getFeaturesMatrix()
+                    self.segue(identifier: "predictionSegue")
                 }
             }
             operationQueue.addOperation(sensorSampler)
         }else if buttonString == "STOP"{
             sensorSampler.cancel()
             
+            
         }
         
     }
     
+    func segue(identifier: String){
+        print("performing")
+        performSegue(withIdentifier: identifier, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare")
+        if segue.identifier == "predictionSegue"{
+            let destinationVC = segue.destination as? PredictionViewController
+            //print(self.featureMatrix)
+            destinationVC!.featureMatrix = self.featureMatrix
+        }
+    }
+    
 }
-
