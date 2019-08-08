@@ -18,8 +18,8 @@ class Predictors {
     
     private let labelMapping = [
         1:"WALKING",
-        2:"WALKING_UPSTAIRS",
-        3:"WALKING_DOWNSTAIRS",
+        2:"WALKING_U",
+        3:"WALKING_D",
         4:"SITTING",
         5:"STANDING",
         6:"LAYING"]

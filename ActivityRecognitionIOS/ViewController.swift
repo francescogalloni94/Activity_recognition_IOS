@@ -20,9 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let transfrom = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
-        activityIndicator.transform = transfrom
-        activityIndicator.isHidden = true
+        viewSetup()
     }
 
     @IBAction func onButtonClick(_ sender: UIButton) {
@@ -53,6 +51,12 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewSetup()
+        
+    }
+    
     func segue(identifier: String){
         performSegue(withIdentifier: identifier, sender: self)
     }
@@ -62,6 +66,14 @@ class ViewController: UIViewController {
             let destinationVC = segue.destination as? PredictionViewController
             destinationVC!.featureMatrix = self.featureMatrix
         }
+    }
+    
+    func viewSetup(){
+        let transfrom = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
+        activityIndicator.transform = transfrom
+        activityIndicator.isHidden = true
+        recordingLabel.text = "START RECORDING AN ACTIVITY"
+        recordingButton.setTitle("START",for:.normal)
     }
     
 }
