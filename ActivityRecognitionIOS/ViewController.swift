@@ -20,9 +20,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        stackView.frame.origin.x = view.frame.width/2 - stackView.frame.width/2
-        stackView.frame.origin.y = view.frame.height/2 - stackView.frame.width/2
         let transfrom = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
         activityIndicator.transform = transfrom
         activityIndicator.isHidden = true
@@ -63,7 +60,6 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "predictionSegue"{
             let destinationVC = segue.destination as? PredictionViewController
-            //print(self.featureMatrix)
             destinationVC!.featureMatrix = self.featureMatrix
         }
     }
