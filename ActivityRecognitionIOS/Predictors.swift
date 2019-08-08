@@ -92,11 +92,13 @@ class Predictors {
         return scaledFeatures
     }
     
-    func getNeuralNetworkPrediction(inputs:[nn_arInput])->[nn_arOutput]{
-        guard let output = try? self.neural_network.predictions(inputs:inputs) else {
+    func getNeuralNetworkPrediction(inputs:[[Double]])->String{
+        var convertedScaledInput = convertNNInput(input: getFeaturesScaled(input: inputs))
+        guard let output = try? self.neural_network.predictions(inputs:convertedScaledInput) else {
             fatalError("Unexpected runtime error.")
         }
-        return output
+        var majority = getMajorityPrediction(labels: convertNNOutput(output: output))
+        return labelMapping[majority]!
     }
     
     func getRandomForestPrediction(inputs:[[Double]])->String{
@@ -134,8 +136,21 @@ class Predictors {
         return labels
     }
     
-    private func convertNNOutput(){
-        
+    private func convertNNOutput(output:[nn_arOutput])->[Int]{
+        var labels = [Int]()
+        for element in output{
+            var maxProb = 0.0
+            var activity = 0
+            var probVector = element.output1
+            for i in 0...5 {
+                if probVector[i].doubleValue>maxProb{
+                    maxProb = probVector[i].doubleValue
+                    activity = i+1
+                }
+            }
+           labels.append(activity)
+        }
+       return labels
     }
     
     

@@ -16,11 +16,13 @@ class PredictionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.predictors = Predictors()
-        var outputRF = predictors?.getRandomForestPrediction(inputs: self.featureMatrix!)
-        print("Random forest: "+outputRF!)
-        var outputSVM = predictors?.getSVMPrediction(inputs: self.featureMatrix!)
-        print("SVM: "+outputSVM!)
-     
+        let outputRF = predictors!.getRandomForestPrediction(inputs: self.featureMatrix!)
+        print("Random forest: "+outputRF)
+        let outputSVM = predictors!.getSVMPrediction(inputs: self.featureMatrix!)
+        print("SVM: "+outputSVM)
+        let outputNN = predictors!.getNeuralNetworkPrediction(inputs: self.featureMatrix!)
+        print("NN: "+outputNN)
+
     }
     
 
