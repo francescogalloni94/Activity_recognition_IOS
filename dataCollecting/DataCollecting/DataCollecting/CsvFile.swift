@@ -24,6 +24,7 @@ class CsvFile{
         self.preprocessing = preprocessing
         self.label = label
         writeFile(fileString: createLabelString(preprocessed: self.preprocessing.preprocessedXBodyAcc, label: self.label), fileName: self.label+"Labels")
+        print(readingFile(fileName: self.label+"Labels"))
         writeFile(fileString: createDataString(data: self.preprocessing.preprocessedXBodyAcc), fileName: self.label+"XBodyAcc")
         writeFile(fileString: createDataString(data: self.preprocessing.preprocessedYBodyAcc), fileName: self.label+"YBodyAcc")
         writeFile(fileString: createDataString(data: self.preprocessing.preprocessedZBodyAcc), fileName: self.label+"ZBodyAcc")
@@ -62,7 +63,7 @@ class CsvFile{
     func writeFile(fileString:String,fileName:String){
         let fileManager = FileManager.default
         do {
-            let path = try fileManager.url(for: .documentDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
+            let path = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let fileURL = path.appendingPathComponent(fileName+".csv")
             try fileString.write(to: fileURL, atomically: true, encoding: .utf8)
         } catch {
@@ -74,7 +75,7 @@ class CsvFile{
         var file = ""
         let fileManager = FileManager.default
         do {
-            let path = try fileManager.url(for: .documentDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
+            let path = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let fileURL = path.appendingPathComponent(fileName+".csv")
             file = try String(contentsOf: fileURL, encoding: .utf8)
         }
