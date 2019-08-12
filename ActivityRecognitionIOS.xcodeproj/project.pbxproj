@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2FD5C422FD9168007F777A /* feature_scaler.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4F2FD5C322FD9168007F777A /* feature_scaler.mlmodel */; };
+		4F2FD5C622FD9171007F777A /* nn_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4F2FD5C522FD9171007F777A /* nn_ar.mlmodel */; };
+		4F2FD5C822FD9177007F777A /* rf_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4F2FD5C722FD9177007F777A /* rf_ar.mlmodel */; };
+		4F2FD5CA22FD917E007F777A /* svm_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4F2FD5C922FD917E007F777A /* svm_ar.mlmodel */; };
 		4F705C3322F9891B002B1F2E /* SigmaDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F705C3222F9891B002B1F2E /* SigmaDistrib.swift */; };
 		4F7D669022FAD6EE00FDA922 /* PredictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D668F22FAD6EE00FDA922 /* PredictionViewController.swift */; };
-		4F7D669222FAF30500FDA922 /* feature_scaler.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D669122FAF30500FDA922 /* feature_scaler.mlmodel */; };
 		4FB7C38F22F0A163001517DA /* SensorSamplingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB7C38E22F0A163001517DA /* SensorSamplingOperation.swift */; };
 		4FC53EE422C25D20008EFF69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC53EE322C25D20008EFF69 /* AppDelegate.swift */; };
 		4FC53EE622C25D20008EFF69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC53EE522C25D20008EFF69 /* ViewController.swift */; };
@@ -17,17 +20,19 @@
 		4FC53EEB22C25D22008EFF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC53EEA22C25D22008EFF69 /* Assets.xcassets */; };
 		4FC53EEE22C25D22008EFF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC53EEC22C25D22008EFF69 /* LaunchScreen.storyboard */; };
 		4FE110A522F4900400CE005E /* Predictors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A422F4900400CE005E /* Predictors.swift */; };
-		4FE110A722F4929200CE005E /* nn_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A622F4929200CE005E /* nn_ar.mlmodel */; };
-		4FE110A922F492B000CE005E /* rf_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110A822F492B000CE005E /* rf_ar.mlmodel */; };
-		4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */; };
 		4FE110AD22F49C3700CE005E /* Preprocessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AC22F49C3700CE005E /* Preprocessing.swift */; };
 		4FE110AF22F49C4A00CE005E /* FeatureExtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE110AE22F49C4A00CE005E /* FeatureExtraction.swift */; };
+		4FE3251C2301AA4800438880 /* rf_ar_personal.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3251B2301AA4800438880 /* rf_ar_personal.mlmodel */; };
+		4FE3251E2301AA4F00438880 /* feature_scaler_personal.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3251D2301AA4F00438880 /* feature_scaler_personal.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F2FD5C322FD9168007F777A /* feature_scaler.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = feature_scaler.mlmodel; path = "ModelPrototyping/models30%SubjectOut/feature_scaler.mlmodel"; sourceTree = SOURCE_ROOT; };
+		4F2FD5C522FD9171007F777A /* nn_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = nn_ar.mlmodel; path = "ModelPrototyping/models30%SubjectOut/nn_ar.mlmodel"; sourceTree = SOURCE_ROOT; };
+		4F2FD5C722FD9177007F777A /* rf_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = rf_ar.mlmodel; path = "ModelPrototyping/models30%SubjectOut/rf_ar.mlmodel"; sourceTree = SOURCE_ROOT; };
+		4F2FD5C922FD917E007F777A /* svm_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = svm_ar.mlmodel; path = "ModelPrototyping/models30%SubjectOut/svm_ar.mlmodel"; sourceTree = SOURCE_ROOT; };
 		4F705C3222F9891B002B1F2E /* SigmaDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigmaDistrib.swift; sourceTree = "<group>"; };
 		4F7D668F22FAD6EE00FDA922 /* PredictionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionViewController.swift; sourceTree = "<group>"; };
-		4F7D669122FAF30500FDA922 /* feature_scaler.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = feature_scaler.mlmodel; path = ModelPrototyping/feature_scaler.mlmodel; sourceTree = SOURCE_ROOT; };
 		4FB7C38E22F0A163001517DA /* SensorSamplingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorSamplingOperation.swift; sourceTree = "<group>"; };
 		4FC53EE022C25D20008EFF69 /* ActivityRecognitionIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityRecognitionIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC53EE322C25D20008EFF69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,11 +42,10 @@
 		4FC53EED22C25D22008EFF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FC53EEF22C25D22008EFF69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE110A422F4900400CE005E /* Predictors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictors.swift; sourceTree = "<group>"; };
-		4FE110A622F4929200CE005E /* nn_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = nn_ar.mlmodel; path = ModelPrototyping/nn_ar.mlmodel; sourceTree = SOURCE_ROOT; };
-		4FE110A822F492B000CE005E /* rf_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = rf_ar.mlmodel; path = ModelPrototyping/rf_ar.mlmodel; sourceTree = SOURCE_ROOT; };
-		4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = svm_ar.mlmodel; path = ModelPrototyping/svm_ar.mlmodel; sourceTree = SOURCE_ROOT; };
 		4FE110AC22F49C3700CE005E /* Preprocessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preprocessing.swift; sourceTree = "<group>"; };
 		4FE110AE22F49C4A00CE005E /* FeatureExtraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureExtraction.swift; sourceTree = "<group>"; };
+		4FE3251B2301AA4800438880 /* rf_ar_personal.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = rf_ar_personal.mlmodel; path = ModelPrototyping/personalModel/rf_ar_personal.mlmodel; sourceTree = SOURCE_ROOT; };
+		4FE3251D2301AA4F00438880 /* feature_scaler_personal.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = feature_scaler_personal.mlmodel; path = ModelPrototyping/personalModel/feature_scaler_personal.mlmodel; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,13 +87,15 @@
 				4FC53EEF22C25D22008EFF69 /* Info.plist */,
 				4FB7C38E22F0A163001517DA /* SensorSamplingOperation.swift */,
 				4FE110A422F4900400CE005E /* Predictors.swift */,
-				4FE110A622F4929200CE005E /* nn_ar.mlmodel */,
-				4FE110A822F492B000CE005E /* rf_ar.mlmodel */,
-				4FE110AA22F492CB00CE005E /* svm_ar.mlmodel */,
 				4FE110AC22F49C3700CE005E /* Preprocessing.swift */,
 				4FE110AE22F49C4A00CE005E /* FeatureExtraction.swift */,
 				4F7D668F22FAD6EE00FDA922 /* PredictionViewController.swift */,
-				4F7D669122FAF30500FDA922 /* feature_scaler.mlmodel */,
+				4F2FD5C322FD9168007F777A /* feature_scaler.mlmodel */,
+				4F2FD5C522FD9171007F777A /* nn_ar.mlmodel */,
+				4F2FD5C722FD9177007F777A /* rf_ar.mlmodel */,
+				4F2FD5C922FD917E007F777A /* svm_ar.mlmodel */,
+				4FE3251B2301AA4800438880 /* rf_ar_personal.mlmodel */,
+				4FE3251D2301AA4F00438880 /* feature_scaler_personal.mlmodel */,
 			);
 			path = ActivityRecognitionIOS;
 			sourceTree = "<group>";
@@ -166,17 +172,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC53EE622C25D20008EFF69 /* ViewController.swift in Sources */,
-				4FE110A922F492B000CE005E /* rf_ar.mlmodel in Sources */,
 				4FE110AD22F49C3700CE005E /* Preprocessing.swift in Sources */,
+				4F2FD5CA22FD917E007F777A /* svm_ar.mlmodel in Sources */,
 				4FE110AF22F49C4A00CE005E /* FeatureExtraction.swift in Sources */,
 				4FB7C38F22F0A163001517DA /* SensorSamplingOperation.swift in Sources */,
+				4FE3251E2301AA4F00438880 /* feature_scaler_personal.mlmodel in Sources */,
 				4F7D669022FAD6EE00FDA922 /* PredictionViewController.swift in Sources */,
-				4FE110AB22F492CB00CE005E /* svm_ar.mlmodel in Sources */,
-				4F7D669222FAF30500FDA922 /* feature_scaler.mlmodel in Sources */,
 				4FE110A522F4900400CE005E /* Predictors.swift in Sources */,
 				4F705C3322F9891B002B1F2E /* SigmaDistrib.swift in Sources */,
+				4F2FD5C822FD9177007F777A /* rf_ar.mlmodel in Sources */,
+				4F2FD5C422FD9168007F777A /* feature_scaler.mlmodel in Sources */,
 				4FC53EE422C25D20008EFF69 /* AppDelegate.swift in Sources */,
-				4FE110A722F4929200CE005E /* nn_ar.mlmodel in Sources */,
+				4F2FD5C622FD9171007F777A /* nn_ar.mlmodel in Sources */,
+				4FE3251C2301AA4800438880 /* rf_ar_personal.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y59PMDBX5M;
 				INFOPLIST_FILE = ActivityRecognitionIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,6 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y59PMDBX5M;
 				INFOPLIST_FILE = ActivityRecognitionIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

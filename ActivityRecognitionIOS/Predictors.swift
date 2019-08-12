@@ -13,8 +13,10 @@ class Predictors {
     
     private var neural_network: nn_ar
     private var random_forets : rf_ar
+    private var personal_random_forest : rf_ar_personal
     private var svm : svm_ar
     private var scaler : feature_scaler
+    private var personal_scaler : feature_scaler_personal
     
     private let labelMapping = [
         1:"WALKING",
@@ -28,8 +30,10 @@ class Predictors {
     init() {
         self.neural_network = nn_ar()
         self.random_forets = rf_ar()
+        self.personal_random_forest = rf_ar_personal()
         self.svm = svm_ar()
         self.scaler = feature_scaler()
+        self.personal_scaler = feature_scaler_personal()
     }
     
     private func convertToMultiArray(input:[[Double]])->[MLMultiArray]{
@@ -71,6 +75,14 @@ class Predictors {
         return converted
     }
     
+    private func convertRFPersonalInput(input:[MLMultiArray])->[rf_ar_personalInput]{
+        var converted = [rf_ar_personalInput]()
+        for (index,element) in input.enumerated(){
+            converted.append(rf_ar_personalInput(input: element))
+        }
+        return converted
+    }
+    
     private func convertScalerInput(input:[[Double]])->[feature_scalerInput]{
         var inputC = convertToMultiArray(input: input)
         var converted = [feature_scalerInput]()
@@ -80,9 +92,30 @@ class Predictors {
         return converted
     }
     
+    private func convertPersonalScalerInput(input:[[Double]])->[feature_scaler_personalInput]{
+        var inputC = convertToMultiArray(input: input)
+        var converted = [feature_scaler_personalInput]()
+        for (index,element) in inputC.enumerated(){
+            converted.append(feature_scaler_personalInput(input: element))
+        }
+        return converted
+    }
+    
     private func getFeaturesScaled(input:[[Double]])->[MLMultiArray]{
         var converted = convertScalerInput(input: input)
         guard let output = try? self.scaler.predictions(inputs:converted) else {
+            fatalError("Unexpected runtime error.")
+        }
+        var scaledFeatures = [MLMultiArray]()
+        for(index,element) in output.enumerated(){
+            scaledFeatures.append(output[index].transformed_features)
+        }
+        return scaledFeatures
+    }
+    
+    private func getFeaturesScaledPersonal(input:[[Double]])->[MLMultiArray]{
+        var converted = convertPersonalScalerInput(input: input)
+        guard let output = try? self.personal_scaler.predictions(inputs:converted) else {
             fatalError("Unexpected runtime error.")
         }
         var scaledFeatures = [MLMultiArray]()
@@ -110,6 +143,15 @@ class Predictors {
         return labelMapping[majority]!
     }
     
+    func getRandomForestPersonalPrediction(inputs:[[Double]])->String{
+        var convertedScaledInput = convertRFPersonalInput(input: getFeaturesScaledPersonal(input:inputs))
+        guard let output = try? self.personal_random_forest.predictions(inputs:convertedScaledInput) else {
+            fatalError("Unexpected runtime error.")
+        }
+        var majority = getMajorityPrediction(labels: convertRFPersonalOutput(output: output))
+        return labelMapping[majority]!
+    }
+    
     func getSVMPrediction(inputs:[[Double]])->String{
         var convertedScaledInput = convertSVMInput(input: getFeaturesScaled(input: inputs))
         guard let output = try? self.svm.predictions(inputs:convertedScaledInput) else {
@@ -120,6 +162,14 @@ class Predictors {
     }
     
     private func convertRFOutput(output:[rf_arOutput])->[Int]{
+        var labels = [Int]()
+        for element in output{
+            labels.append(Int(element.classLabel))
+        }
+        return labels
+    }
+    
+    private func convertRFPersonalOutput(output:[rf_ar_personalOutput])->[Int]{
         var labels = [Int]()
         for element in output{
             labels.append(Int(element.classLabel))

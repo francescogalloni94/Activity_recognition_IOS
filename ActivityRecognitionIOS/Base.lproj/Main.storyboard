@@ -79,8 +79,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="Kru-Xh-dc5">
-                                <rect key="frame" x="115.66666666666669" y="271" width="182.66666666666663" height="354"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="FEn-2S-4EK">
+                                <rect key="frame" x="115.66666666666667" y="252" width="182.66666666666663" height="392"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SVM:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKj-TU-U1s">
                                         <rect key="frame" x="67.333333333333329" y="0.0" width="48" height="24"/>
@@ -93,7 +93,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDICTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDc-3x-iq3">
-                                        <rect key="frame" x="33.999999999999979" y="66" width="114.66666666666669" height="24"/>
+                                        <rect key="frame" x="33.999999999999979" y="48" width="114.66666666666669" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="6mK-nj-sg5"/>
                                             <constraint firstAttribute="width" constant="114.5" id="lIV-DG-Yk8"/>
@@ -102,7 +102,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RANDOM FOREST:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M99-9X-5Tn">
-                                        <rect key="frame" x="7.3333333333333286" y="132" width="168" height="24"/>
+                                        <rect key="frame" x="7.3333333333333286" y="96" width="168" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="kMm-uO-GKm"/>
                                             <constraint firstAttribute="width" constant="168" id="rjl-gH-bPX"/>
@@ -112,7 +112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDICTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFg-pL-uC4">
-                                        <rect key="frame" x="33.999999999999979" y="198" width="114.66666666666669" height="24"/>
+                                        <rect key="frame" x="33.999999999999979" y="144" width="114.66666666666669" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="114.5" id="NPB-Xb-QMZ"/>
                                             <constraint firstAttribute="height" constant="24" id="eMe-BJ-8Xa"/>
@@ -121,7 +121,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEURAL NETWORK:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aga-HQ-q3a">
-                                        <rect key="frame" x="0.0" y="264" width="182.66666666666666" height="24"/>
+                                        <rect key="frame" x="0.0" y="192" width="182.66666666666666" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="182.5" id="Hut-tc-Lav"/>
                                             <constraint firstAttribute="height" constant="24" id="gl5-3g-REg"/>
@@ -131,7 +131,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDICTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LA3-7v-bD8">
-                                        <rect key="frame" x="33.999999999999979" y="330" width="114.66666666666669" height="24"/>
+                                        <rect key="frame" x="33.999999999999979" y="240" width="114.66666666666669" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="946-16-luB"/>
                                             <constraint firstAttribute="width" constant="114.5" id="JTD-qP-LpX"/>
@@ -139,29 +139,63 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qwp-fK-NEb">
+                                        <rect key="frame" x="0.0" y="288" width="182.66666666666666" height="56"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERSONAL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFB-UP-iPB">
+                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="182.5" id="Dyp-Uf-HlI"/>
+                                                    <constraint firstAttribute="height" constant="24" id="FeP-fe-ed2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RANDOM FOREST:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3M-fM-tCQ">
+                                                <rect key="frame" x="0.0" y="32" width="182.66666666666666" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="OJ4-zS-r6r"/>
+                                                    <constraint firstAttribute="width" constant="182.5" id="dja-Zj-g55"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDICTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4d-4g-cWC">
+                                        <rect key="frame" x="33.999999999999979" y="368" width="114.66666666666669" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Ifj-iV-UK0"/>
+                                            <constraint firstAttribute="width" constant="114.5" id="ver-gw-fgF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <variation key="heightClass=compact-widthClass=compact" spacing="24"/>
-                                <variation key="heightClass=compact-widthClass=regular" spacing="30"/>
-                                <variation key="heightClass=regular-widthClass=compact" spacing="42"/>
+                                <variation key="heightClass=compact-widthClass=compact" spacing="4"/>
+                                <variation key="heightClass=compact-widthClass=regular" spacing="12"/>
+                                <variation key="heightClass=regular-widthClass=compact" spacing="24"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kru-Xh-dc5" firstAttribute="centerX" secondItem="eDA-cJ-178" secondAttribute="centerX" id="Se9-ah-gir"/>
-                            <constraint firstItem="Kru-Xh-dc5" firstAttribute="centerY" secondItem="eDA-cJ-178" secondAttribute="centerY" id="WE8-Eq-lxt"/>
+                            <constraint firstItem="FEn-2S-4EK" firstAttribute="centerY" secondItem="eDA-cJ-178" secondAttribute="centerY" id="PtU-45-uWI"/>
+                            <constraint firstItem="FEn-2S-4EK" firstAttribute="centerX" secondItem="eDA-cJ-178" secondAttribute="centerX" id="hW8-9p-rKh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EJe-AB-H1c"/>
                     </view>
                     <connections>
                         <outlet property="nnPrediction" destination="LA3-7v-bD8" id="ZBf-4o-6gt"/>
+                        <outlet property="personalRFPrediction" destination="N4d-4g-cWC" id="U1C-CQ-k3l"/>
                         <outlet property="rfPrediction" destination="eFg-pL-uC4" id="omT-bz-OKl"/>
-                        <outlet property="stackView" destination="Kru-Xh-dc5" id="dhC-W6-ztS"/>
                         <outlet property="svmPrediction" destination="mDc-3x-iq3" id="C40-Tx-6XV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLv-zn-Lll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1925" y="118.125"/>
+            <point key="canvasLocation" x="1923.5915492957747" y="116.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AtU-8Z-iT0">

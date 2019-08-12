@@ -16,6 +16,7 @@ class PredictionViewController: UIViewController {
     @IBOutlet weak var rfPrediction: UILabel!
     @IBOutlet weak var nnPrediction: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var personalRFPrediction: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,10 @@ class PredictionViewController: UIViewController {
         let outputNN = predictors!.getNeuralNetworkPrediction(inputs: featureMatrix!)
         nnPrediction.text = outputNN
         print("NN: "+outputNN)
+        let outputPersonalRF = predictors!.getRandomForestPersonalPrediction(inputs: featureMatrix!)
+        personalRFPrediction.text = outputPersonalRF
+        print("RFPersonal:"+outputPersonalRF)
+        
 
     }
     
